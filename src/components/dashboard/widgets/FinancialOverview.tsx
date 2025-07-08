@@ -20,13 +20,13 @@ const FinancialOverview: React.FC<FinancialOverviewProps> = ({ metrics }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {metrics.map((metric, index) => {
         const Icon = iconMap[metric.icon as keyof typeof iconMap] || DollarSign;
         const isPositive = metric.changeType === 'increase';
         
         return (
-          <Card key={metric.id} className="relative overflow-hidden group hover:scale-105 transition-all duration-300">
+          <div key={metric.id} className="relative overflow-hidden group hover:scale-105 transition-all duration-300 glass-card rounded-2xl p-6">
             {/* Animated Background */}
             <div className={`absolute inset-0 bg-gradient-to-br ${metric.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`} />
             
@@ -90,7 +90,7 @@ const FinancialOverview: React.FC<FinancialOverviewProps> = ({ metrics }) => {
               {/* Pulse Effect on Hover */}
               <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-blue-200 transition-all duration-300" />
             </div>
-          </Card>
+          </div>
         );
       })}
     </div>

@@ -47,7 +47,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
           <div className="space-y-6 animate-fade-in-up">
             {/* Financial Overview Cards */}
             <div className="mb-6">
-              <FinancialOverview metrics={financialMetrics} />
+              <div className="glass-card rounded-2xl p-6">
+                <FinancialOverview metrics={financialMetrics} />
+              </div>
             </div>
             
             {/* Main Analytics Grid - 2x2 Layout */}
@@ -75,12 +77,16 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
 
             {/* Expense Analysis - Full Width */}
             <div className="mb-6 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
-              <ExpenseBreakdown data={expenseData} />
+              <div className="glass-card rounded-2xl">
+                <ExpenseBreakdown data={expenseData} />
+              </div>
             </div>
 
             {/* Trend Analysis - Full Width */}
             <div className="mb-6 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
-              <TrendAnalysis />
+              <div className="glass-card rounded-2xl">
+                <TrendAnalysis />
+              </div>
             </div>
 
             {/* Enhanced Quick Insights Grid */}
@@ -128,10 +134,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
                   className={`
                     backdrop-blur-lg rounded-xl p-4 border transition-all duration-300 group hover:scale-105
                     animate-fade-in-up hover-lift
-                    ${theme === 'light' 
-                      ? 'bg-white/70 border-white/30 shadow-lg hover:shadow-xl' 
-                      : 'bg-gray-800/70 border-gray-700/30 shadow-xl hover:shadow-2xl'
-                    }
+                    glass-card
                   `}
                   style={{ animationDelay: `${700 + sectionIndex * 100}ms` }}
                 >
@@ -170,10 +173,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
             {/* AI Insights Section */}
             <div className={`
               p-5 rounded-xl border transition-all duration-300 animate-fade-in-up
-              ${theme === 'light' 
-                ? 'bg-gradient-to-r from-indigo-50/80 to-purple-50/80 border-indigo-200/50' 
-                : 'bg-gradient-to-r from-indigo-900/20 to-purple-900/20 border-indigo-700/50'
-              }
+              glass-ultra
             `} style={{ animationDelay: '1100ms' }}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className={`text-lg font-semibold ${
@@ -212,10 +212,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
                     key={index} 
                     className={`
                       p-4 rounded-lg transition-all duration-300 hover:scale-105 hover-lift
-                      ${theme === 'light' 
-                        ? 'bg-white/70 border border-white/50 hover:shadow-lg' 
-                        : 'bg-gray-800/50 border border-gray-700/50 hover:shadow-xl'
-                      }
+                      glass-subtle
                     `}
                     style={{ animationDelay: `${1200 + index * 100}ms` }}
                   >
