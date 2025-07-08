@@ -243,23 +243,76 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const formatCurrency = (amount: number): string => {
     const currencyMap = {
-      usd: { code: 'USD', symbol: '$', locale: 'en-US' },
-      eur: { code: 'EUR', symbol: '€', locale: 'de-DE' },
-      gbp: { code: 'GBP', symbol: '£', locale: 'en-GB' },
-      cad: { code: 'CAD', symbol: 'C$', locale: 'en-CA' },
-      inr: { code: 'INR', symbol: '₹', locale: 'en-IN' }
+      usd: { 
+        code: 'USD', 
+        symbol: '$', 
+        locale: 'en-US',
+        units: { million: 'M', thousand: 'K', billion: 'B' }
+      },
+      eur: { 
+        code: 'EUR', 
+        symbol: '€', 
+        locale: 'de-DE',
+        units: { million: 'M', thousand: 'K', billion: 'Mrd' }
+      },
+      gbp: { 
+        code: 'GBP', 
+        symbol: '£', 
+        locale: 'en-GB',
+        units: { million: 'M', thousand: 'K', billion: 'B' }
+      },
+      cad: { 
+        code: 'CAD', 
+        symbol: 'C$', 
+        locale: 'en-CA',
+        units: { million: 'M', thousand: 'K', billion: 'B' }
+      },
+      inr: { 
+        code: 'INR', 
+        symbol: '₹', 
+        locale: 'en-IN',
+        units: { crore: 'Cr', lakh: 'L', thousand: 'T', billion: 'B' }
+      }
     };
 
     const currency = currencyMap[regional.currency as keyof typeof currencyMap] || currencyMap.usd;
     
+    // Convert USD amounts to other currencies (simplified conversion rates)
+    const conversionRates = {
+      usd: 1,
+      eur: 0.85,
+      gbp: 0.73,
+      cad: 1.25,
+      inr: 83.12
+    };
+    
+    const convertedAmount = amount * conversionRates[regional.currency as keyof typeof conversionRates];
+    
     try {
-      // For compact display (millions/thousands)
-      if (amount >= 1000000) {
-        const value = amount / 1000000;
-        return `${currency.symbol}${value.toFixed(1)}M`;
-      } else if (amount >= 1000) {
-        const value = amount / 1000;
-        return `${currency.symbol}${value.toFixed(1)}K`;
+      // Special formatting for INR
+      if (regional.currency === 'inr') {
+        if (convertedAmount >= 10000000) { // 1 crore
+          const value = convertedAmount / 10000000;
+          return `${currency.symbol}${value.toFixed(1)} ${currency.units.crore}`;
+        } else if (convertedAmount >= 100000) { // 1 lakh
+          const value = convertedAmount / 100000;
+          return `${currency.symbol}${value.toFixed(1)} ${currency.units.lakh}`;
+        } else if (convertedAmount >= 1000) { // 1 thousand
+          const value = convertedAmount / 1000;
+          return `${currency.symbol}${value.toFixed(1)} ${currency.units.thousand}`;
+        }
+      } else {
+        // Standard formatting for other currencies
+        if (convertedAmount >= 1000000000) { // 1 billion
+          const value = convertedAmount / 1000000000;
+          return `${currency.symbol}${value.toFixed(1)} ${currency.units.billion}`;
+        } else if (convertedAmount >= 1000000) { // 1 million
+          const value = convertedAmount / 1000000;
+          return `${currency.symbol}${value.toFixed(1)} ${currency.units.million}`;
+        } else if (convertedAmount >= 1000) { // 1 thousand
+          const value = convertedAmount / 1000;
+          return `${currency.symbol}${value.toFixed(1)} ${currency.units.thousand}`;
+        }
       }
       
       // For regular amounts
@@ -268,15 +321,25 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         currency: currency.code,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
-      }).format(amount);
+      }).format(convertedAmount);
     } catch (error) {
       // Fallback for unsupported currencies
-      if (amount >= 1000000) {
-        return `${currency.symbol}${(amount / 1000000).toFixed(1)}M`;
-      } else if (amount >= 1000) {
-        return `${currency.symbol}${(amount / 1000).toFixed(1)}K`;
+      if (regional.currency === 'inr') {
+        if (convertedAmount >= 10000000) {
+          return `${currency.symbol}${(convertedAmount / 10000000).toFixed(1)} Cr`;
+        } else if (convertedAmount >= 100000) {
+          return `${currency.symbol}${(convertedAmount / 100000).toFixed(1)} L`;
+        } else if (convertedAmount >= 1000) {
+          return `${currency.symbol}${(convertedAmount / 1000).toFixed(1)} T`;
+        }
+      } else {
+        if (convertedAmount >= 1000000) {
+          return `${currency.symbol}${(convertedAmount / 1000000).toFixed(1)}M`;
+        } else if (convertedAmount >= 1000) {
+          return `${currency.symbol}${(convertedAmount / 1000).toFixed(1)}K`;
+        }
       }
-      return `${currency.symbol}${amount.toLocaleString()}`;
+      return `${currency.symbol}${convertedAmount.toLocaleString()}`;
     }
   };
 

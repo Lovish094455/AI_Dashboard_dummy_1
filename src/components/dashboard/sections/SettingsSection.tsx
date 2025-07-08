@@ -292,11 +292,7 @@ const SettingsSection: React.FC = () => {
                       type="text" 
                       value={profile.firstName}
                       onChange={(e) => updateProfile({ firstName: e.target.value })}
-                      className={`w-full border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 ${
-                        theme === 'light' 
-                          ? 'bg-gray-50 border-gray-300 text-gray-900' 
-                          : 'bg-gray-700 border-gray-600 text-white'
-                      }`}
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none transition-all duration-300"
                     />
                   </div>
                   <div>
@@ -307,11 +303,7 @@ const SettingsSection: React.FC = () => {
                       type="text" 
                       value={profile.lastName}
                       onChange={(e) => updateProfile({ lastName: e.target.value })}
-                      className={`w-full border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 ${
-                        theme === 'light' 
-                          ? 'bg-gray-50 border-gray-300 text-gray-900' 
-                          : 'bg-gray-700 border-gray-600 text-white'
-                      }`}
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none transition-all duration-300"
                     />
                   </div>
                   <div>
@@ -322,11 +314,7 @@ const SettingsSection: React.FC = () => {
                       type="email" 
                       value={profile.email}
                       onChange={(e) => updateProfile({ email: e.target.value })}
-                      className={`w-full border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 ${
-                        theme === 'light' 
-                          ? 'bg-gray-50 border-gray-300 text-gray-900' 
-                          : 'bg-gray-700 border-gray-600 text-white'
-                      }`}
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none transition-all duration-300"
                     />
                   </div>
                   <div>
@@ -337,11 +325,7 @@ const SettingsSection: React.FC = () => {
                       type="tel" 
                       value={profile.phone}
                       onChange={(e) => updateProfile({ phone: e.target.value })}
-                      className={`w-full border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 ${
-                        theme === 'light' 
-                          ? 'bg-gray-50 border-gray-300 text-gray-900' 
-                          : 'bg-gray-700 border-gray-600 text-white'
-                      }`}
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none transition-all duration-300"
                     />
                   </div>
                   <div>
@@ -352,11 +336,7 @@ const SettingsSection: React.FC = () => {
                       type="text" 
                       value={profile.jobTitle}
                       onChange={(e) => updateProfile({ jobTitle: e.target.value })}
-                      className={`w-full border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 ${
-                        theme === 'light' 
-                          ? 'bg-gray-50 border-gray-300 text-gray-900' 
-                          : 'bg-gray-700 border-gray-600 text-white'
-                      }`}
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none transition-all duration-300"
                     />
                   </div>
                   <div>
@@ -378,11 +358,7 @@ const SettingsSection: React.FC = () => {
                       value={profile.bio}
                       onChange={(e) => updateProfile({ bio: e.target.value })}
                       rows={3}
-                      className={`w-full border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all duration-300 resize-none ${
-                        theme === 'light' 
-                          ? 'bg-gray-50 border-gray-300 text-gray-900' 
-                          : 'bg-gray-700 border-gray-600 text-white'
-                      }`}
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none transition-all duration-300 resize-none"
                       placeholder="Tell us about yourself..."
                     />
                   </div>

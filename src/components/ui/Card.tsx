@@ -20,13 +20,12 @@ const Card: React.FC<CardProps> = ({
   return (
     <div 
       className={`
-        theme-card
-        backdrop-blur-lg 
+        glass-card
         rounded-2xl 
         transition-all 
         duration-300 
         ${hover ? 'hover:scale-[1.02] hover:shadow-2xl' : ''} 
-        ${gradient ? 'bg-gradient-to-br from-white/90 to-gray-50/60 dark:from-gray-800/60 dark:to-gray-900/40' : ''}
+        ${gradient ? 'glass-ultra' : 'apple-glass'}
         p-6
         ${className}
       `}

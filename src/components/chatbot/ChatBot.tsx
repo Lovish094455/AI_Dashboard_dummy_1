@@ -248,10 +248,7 @@ Would you like me to show you specific charts or dive deeper into any particular
     <div className="fixed inset-0 z-50 flex items-end justify-end p-4">
       <div className={`
         w-[480px] h-[700px] flex flex-col rounded-2xl shadow-2xl border transition-all duration-300
-        ${theme === 'light' 
-          ? 'bg-white/95 border-gray-200/50 backdrop-blur-xl' 
-          : 'bg-gray-900/95 border-gray-700/50 backdrop-blur-xl'
-        }
+        glass-ultra
       `}>
         {/* Header */}
         <div className={`flex items-center justify-between p-4 border-b ${

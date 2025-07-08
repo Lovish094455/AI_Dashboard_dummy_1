@@ -271,7 +271,7 @@ const GenerateReportSection: React.FC = () => {
                 <select
                   value={selectedPeriod}
                   onChange={(e) => setSelectedPeriod(e.target.value)}
-                  className="w-full theme-input theme-border border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+                  className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none"
                 >
                   <option value="">Select Period</option>
                   {periods.map((period) => (
@@ -291,7 +291,7 @@ const GenerateReportSection: React.FC = () => {
                       type="date"
                       value={customDateRange.start}
                       onChange={(e) => setCustomDateRange(prev => ({ ...prev, start: e.target.value }))}
-                      className="w-full theme-input theme-border border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -300,7 +300,7 @@ const GenerateReportSection: React.FC = () => {
                       type="date"
                       value={customDateRange.end}
                       onChange={(e) => setCustomDateRange(prev => ({ ...prev, end: e.target.value }))}
-                      className="w-full theme-input theme-border border rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+                      className="w-full glass-input rounded-xl px-4 py-3 focus:outline-none"
                     />
                   </div>
                 </div>

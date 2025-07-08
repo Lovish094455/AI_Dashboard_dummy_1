@@ -68,11 +68,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onToggleChat, isChatOpe
       {/* Floating Glass Header */}
       <div className="p-4 sm:p-6 lg:p-8">
         <div className={`
-          backdrop-blur-xl rounded-2xl shadow-2xl border transition-all duration-300
-          ${theme === 'light' 
-            ? 'bg-white/70 border-white/30 shadow-black/5' 
-            : 'bg-gray-900/70 border-gray-700/30 shadow-black/20'
-          }
+          glass-header rounded-2xl transition-all duration-300
         `}>
           <div className="px-4 sm:px-6 py-4">
             <div className="flex items-center justify-between">
@@ -96,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onToggleChat, isChatOpe
                     variant="glass" 
                     size="sm"
                     onClick={onToggleChat}
-                    className={`${isChatOpen ? 'bg-blue-600 border-blue-500 text-white' : ''} backdrop-blur-md transition-all duration-300 hover:scale-105`}
+                    className={`${isChatOpen ? 'bg-blue-600 border-blue-500 text-white' : ''} transition-all duration-300 hover:scale-105`}
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span className="hidden sm:inline ml-2">AI Assistant</span>
@@ -109,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onToggleChat, isChatOpe
                       variant="glass" 
                       size="sm" 
                       onClick={handleNotificationClick}
-                      className="backdrop-blur-md transition-all duration-300 hover:scale-105"
+                     className="transition-all duration-300 hover:scale-105"
                     >
                       <Bell className="w-4 h-4" />
                       {unreadCount > 0 && (
@@ -123,10 +119,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onToggleChat, isChatOpe
                       <div 
                         className={`
                           absolute z-50 w-80 sm:w-96 rounded-2xl shadow-2xl border
-                          ${theme === 'light' 
-                            ? 'bg-white/95 border-gray-200/50 backdrop-blur-xl' 
-                            : 'bg-gray-900/95 border-gray-700/50 backdrop-blur-xl'
-                          }
+                          glass-notification
                         `}
                         style={{
                           top: buttonPosition.top,
@@ -222,7 +215,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onToggleChat, isChatOpe
                     variant="glass" 
                     size="sm" 
                     onClick={handleSettingsClick}
-                    className="backdrop-blur-md transition-all duration-300 hover:scale-105"
+                    className="transition-all duration-300 hover:scale-105"
                   >
                     <Settings className="w-4 h-4" />
                   </Button>
@@ -230,10 +223,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onToggleChat, isChatOpe
                   {/* User Profile */}
                   <div className={`
                     flex items-center space-x-2 sm:space-x-3 p-2 rounded-xl shadow-lg border transition-all duration-300 hover:scale-105
-                    ${theme === 'light' 
-                      ? 'bg-white/70 border-white/30 backdrop-blur-md' 
-                      : 'bg-gray-800/70 border-gray-700/30 backdrop-blur-md'
-                    }
+                    glass-button
                   `}>
                     <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                       <User className="w-4 h-4 text-white" />
